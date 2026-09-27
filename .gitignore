@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+
+# External artifacts
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+*.nc
+*.zarr/
+outputs/
+checkpoints/*
+!checkpoints/README.md

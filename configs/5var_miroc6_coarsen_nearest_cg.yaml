@@ -1,0 +1,38 @@
+conditioning:
+  method: ps_cg
+  params:
+    mode: cg
+    scale: 3.0
+    tau: 1.0
+    sigma_y: 0.05
+    cg_iters: 3
+
+
+data:
+  name: zarr_climate
+  dataloader: dataloader_accelerate_miroc6
+  var_names: ["z250", "z500", "u10", "v10", "msl"]
+  flag: test
+  start_time: "2001-01-01"
+  end_time: "2001-12-31"
+  batch_size: 1
+  num_workers: 0
+  zarr_path: "path/to/miroc6.zarr"
+  dem_path: "path/to/GENCO_world_resampled_0.25deg.tif"
+  lsm_path: "path/to/land_mask.nc"
+  mean_path: "path/to/z_mean_by_level.npy"
+  std_path: "path/to/z_std_by_level.npy"
+
+
+measurement:
+  operator:
+    name: bilinear_interp_cycle_to32x64to720x1440
+    in_shape: [5, 720, 1440]
+
+  noise:
+    name: gaussian
+    sigma: 0.05
+
+output:
+  save_path: outputs/miroc6_distilled_cg
+  save_images: false

@@ -1,0 +1,60 @@
+# One 4-to-1 progressive distillation round: DDIM-25 teacher -> DDIM-6 student.
+
+teacher:
+  model_config: configs/model_config_5var.yaml
+  diffusion_config: configs/diffusion_config.yaml
+  checkpoint_path: checkpoints/teacher/teacher_checkpoint.pt
+
+data:
+  name: zarr_climate
+  flag: train
+  var_names: [z250, z500, u10, v10, msl]
+  start_time: "2001-01-01"
+  end_time: "2008-12-31"
+  zarr_path: path/to/miroc6.zarr
+  dem_path: path/to/GENCO_world_resampled_0.25deg.tif
+  lsm_path: path/to/land_mask.nc
+  mean_path: path/to/z_mean_by_level.npy
+  std_path: path/to/z_std_by_level.npy
+
+distillation:
+  num_rounds: 1
+  initial_steps: 25
+  epochs_per_round: 60
+
+  batch_size: 1
+  num_workers: 4
+  learning_rate: 1.0e-4
+  weight_decay: 0.0
+  save_dir: checkpoints/progressive_4to1
+
+  log_interval: 50
+  save_interval: 5
+  use_fp16: true
+  debug_shapes: false
+  gradient_clip: 1.0
+
+  seed: 1234
+  master_addr: 127.0.0.1
+  auto_resume: true
+
+  loss:
+    lambda_x: 1.0
+    lambda_x0: 0.5
+    lambda_grad: 0.1
+    lambda_spec: 0.01
+
+  priority_sampling:
+    alpha: 0.4
+    eps: 1.0e-3
+    ema_decay: 0.95
+    warmup_uniform_epochs: 2
+
+  rollout:
+    back_steps: 1
+
+  state_source_mixing:
+    use_dynamic_schedule: false
+    p_forward: 0.8
+    p_teacher: 0.2
+    p_student: 0.0
