@@ -1,0 +1,36 @@
+# Train the ERA5 conditional diffusion prior used as the teacher model.
+
+model:
+  config: configs/model_config_5var.yaml
+
+diffusion:
+  config: configs/diffusion_config.yaml
+
+data:
+  zarr_path: path/to/era5.zarr
+  dem_path: path/to/GENCO_world_resampled_0.25deg.tif
+  lsm_path: path/to/land_mask.nc
+  mean_path: path/to/z_mean_by_level.npy
+  std_path: path/to/z_std_by_level.npy
+  field_name: z
+  time_dim: time
+  level_dim: level
+  var_names: [z250, z500, u10, v10, msl]
+  start_time: "1980-01-02"
+  end_time: "2000-12-31"
+
+training:
+  batch_size: 4
+  num_workers: 4
+  persistent_workers: true
+  num_epochs: 300
+  learning_rate: 1.0e-4
+  weight_decay: 0.0
+  warmup_steps: 500
+  mixed_precision: fp16
+  gradient_clip: 1.0
+  log_every_steps: 50
+  save_every_epochs: 10
+  checkpoint_path: checkpoints/teacher/teacher_checkpoint.pt
+  seed: 1234
+  master_addr: 127.0.0.1

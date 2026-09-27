@@ -21,11 +21,11 @@ from torch.utils.data.distributed import DistributedSampler
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, PROJECT_ROOT)
 
-from distillation.condition_methods_distill import get_conditioning_method
-from distillation.model import DiffusersUNetWrapper, load_yaml
+from script.condition_methods_distill import get_conditioning_method
+from script.model import DiffusersUNetWrapper, load_yaml
 from guided_diffusion.measurements import get_noise, get_operator
 from util.logger import get_logger
-from distillation.distilled_sampler import create_distilled_sampler, get_named_beta_schedule
+from script.distilled_sampler import create_distilled_sampler, get_named_beta_schedule
 
 # ============================================================
 # Optional diagnostic plots: restore physical units before rendering.

@@ -1,4 +1,4 @@
-"""Shared model construction utilities for distillation training and inference."""
+"""Shared model construction utilities for prior training, distillation, and inference."""
 
 import torch
 import torch.nn as nn

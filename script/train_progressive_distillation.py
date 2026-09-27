@@ -26,8 +26,8 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, PROJECT_ROOT)
 
 from data.dataloader_accelerate_miroc6 import get_dataset
-from distillation.distilled_sampler import get_named_beta_schedule
-from distillation.model import DiffusersUNetWrapper, load_yaml
+from script.distilled_sampler import get_named_beta_schedule
+from script.model import DiffusersUNetWrapper, load_yaml
 
 
 # ============================================================
