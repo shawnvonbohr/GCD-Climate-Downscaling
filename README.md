@@ -84,6 +84,8 @@ python script/train_progressive_distillation.py \
   --gpus 1
 ```
 
+The final student checkpoint can be used  for fast downscaling inference.
+
 
 ## Downscaling inference
 
