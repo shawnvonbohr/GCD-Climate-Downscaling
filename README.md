@@ -87,13 +87,6 @@ python script/train_progressive_distillation.py \
   --gpus 1
 ```
 
-`--gpus 1` uses one GPU. Training uses DDP for multiple GPUs, for example, to use four GPUs:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 python script/train_progressive_distillation.py \
-  --config configs/distillation_config_4to1.yaml \
-  --gpus 4
-```
 
 ## Downscaling inference
 
