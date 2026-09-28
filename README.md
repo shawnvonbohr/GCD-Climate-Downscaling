@@ -41,6 +41,9 @@ pip install -r requirements.txt
 
 Data and model weights are not included. Obtain the ERA5 data for prior training and the GCM data for distillation or inference, then set the paths under `data` in `configs/prior_training_config.yaml`, `configs/distillation_config_4to1.yaml`, and `configs/5var_miroc6_coarsen_nearest_cg.yaml`.
 
+The ERA5 and GCMs Zarr store should provide the `z` field with `time`, `level`, and two spatial dimensions; the five channels used in paper are `z250`, `z500`, `u10`, `v10`, and `msl`.
+
+
 ## Model weights
 
 Distillation requires a pretrained teacher model: the diffusion-prior model trained on ERA5. It can be obtained by running the command in the following section.
@@ -65,17 +68,11 @@ python script/train_prior.py \
   --gpus 1
 ```
 
-`--gpus 1` uses one GPU. The trainer uses DDP for multiple GPUs, for example, to use four GPUs:
+`--gpus 1` uses one GPU. The trainer uses DDP for multiple GPUs, for example, to use four GPUs: `--gpus 4`.
 
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 python script/train_prior.py \
-  --config configs/prior_training_config.yaml \
-  --gpus 4
-```
 
 The final teacher checkpoint is saved to `checkpoints/teacher/teacher_checkpoint.pt` and can be used directly for distillation.
 
-The ERA5 Zarr store must provide the `z` field with `time`, `level`, and two spatial dimensions; the five channels are `z250`, `z500`, `u10`, `v10`, and `msl`.
 
 ## Distillation training
 
