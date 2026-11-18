@@ -110,6 +110,6 @@ This work has been accepted at NeurIPS 2026. Publication links will be added whe
   year={2026},
   eprint={2601.21760},
   archivePrefix={arXiv},
-  url={https://arxiv.org/abs/2601.21760}
+  url={https://arxiv.org/pdf/2601.21760v3}
 }
 ```
