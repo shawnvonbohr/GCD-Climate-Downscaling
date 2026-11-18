@@ -104,10 +104,12 @@ python script/distilled_dps_inference_ddp.py \
 本文已被 NeurIPS 2026 接收。论文链接确认后会补充。
 
 ```bibtex
-@inproceedings{gcd2026,
-  title     = {GCM-consistent Diffusion for Zero-shot Downscaling across Heterogeneous GCMs},
-  author    = {Ruian Tie, Wenbo Xiong, Zhengyu Shi, Xinyu Su, Chenyu jiang, Libo Wu, Hao Li},
-  booktitle = {Advances in Neural Information Processing Systems},
-  year      = {2026}
+@misc{gcd2026,
+  title={GCD: GCM-consistent Diffusion for Zero-shot Downscaling across Heterogeneous GCMs},
+  author={Ruian Tie, Wenbo Xiong, Zhengyu Shi, Xinyu Su, Chenyu jiang, Libo Wu, Hao Li},
+  year={2026},
+  eprint={2601.21760},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2601.21760}
 }
 ```
