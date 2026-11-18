@@ -105,9 +105,10 @@ This work has been accepted at NeurIPS 2026. Publication links will be added whe
 
 ```bibtex
 @misc{gcd2026,
-  title     = {GCD: GCM-consistent Diffusion for Zero-shot Downscaling across Heterogeneous GCMs},
-  author    = {Ruian Tie, Wenbo Xiong, Zhengyu Shi, Xinyu Su, Chenyu jiang, Libo Wu, Hao Li},
-  year      = {2026},
+  title={GCD: GCM-consistent Diffusion for Zero-shot Downscaling across Heterogeneous GCMs},
+  author={Ruian Tie, Wenbo Xiong, Zhengyu Shi, Xinyu Su, Chenyu jiang, Libo Wu, Hao Li},
+  year={2026},
+  eprint={2601.21760},
   archivePrefix={arXiv},
   url={https://arxiv.org/abs/2601.21760}
 }
